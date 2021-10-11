@@ -28,8 +28,14 @@ namespace DemoRedis.Api
         {
             services.AddStackExchangeRedisCache(options => 
             {
-                options.InstanceName = "redis_instance";
-                options.Configuration = "localhost:6379";
+                //options.InstanceName = "redis_instance";
+                //options.Configuration = "localhost:6379";
+                options.ConfigurationOptions = new StackExchange.Redis.ConfigurationOptions() 
+                { 
+                    Password = "admin@2021",
+                    EndPoints = { "localhost:6379" }
+                    //Ssl = true
+                };
             });
 
             services.AddControllers();
